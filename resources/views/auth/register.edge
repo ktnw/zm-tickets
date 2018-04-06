@@ -1,0 +1,73 @@
+@layout('layouts.master')
+
+@section('title')
+    Register
+@endsection
+
+@section('content')
+	<div class="row">
+	    <div class="col-md-8 col-md-offset-2">
+	        <div class="panel panel-default">
+	            <div class="panel-heading">Register</div>
+	            <div class="panel-body">
+
+	                <form method="POST" url="/register" class="form-horizontal">
+	                    {{ csrfField() }}
+
+	                    <div class="form-group">
+	                    	<label for="username" class="col-md-4 control-label">Username</label>
+
+	                        <div class="col-md-6">
+	                        	<input type="text" name="username" class="form-control" id="username" aria-describedby="usernameHelp" placeholder="Username" value="{{ old('username', '') }}">
+	                        	@if(hasErrorFor('username'))
+	                        		<span class="text-danger">
+	                        			{{ getErrorFor('username') }}
+	                        		</span>
+	                        	@endif
+	                        </div>
+	                    </div>
+
+	                    <div class="form-group">
+							<label for="email" class="col-md-4 control-label">Email address</label>
+
+	                        <div class="col-md-6">
+
+								<input type="email" name="email" class="form-control" id="email" aria-describedby="emailHelp" placeholder="Enter email" value="{{ old('email', '') }}">
+								@if(hasErrorFor('email'))
+	                        		<span class="text-danger">
+	                        			{{ getErrorFor('email') }}
+	                        		</span>
+	                        	@endif
+	                        </div>
+	                    </div>
+
+	                    <div class="form-group">
+	                    	<label for="password" class="col-md-4 control-label">Password</label>
+
+	                        <div class="col-md-6">
+	                        	<input type="password" name="password" class="form-control" id="password" aria-describedby="passwordHelp" placeholder="Enter password">
+	                        </div>
+	                    </div>
+
+	                    <div class="form-group">
+	                    	<label for="password_confirmation" class="col-md-4 control-label">Confirm Password</label>
+
+	                        <div class="col-md-6">
+	                        	<input type="password" name="password_confirmation" class="form-control" id="password_confirmation" aria-describedby="passwordConfirmationHelp" placeholder="Confirm password">
+	                        </div>
+	                    </div>
+
+	                    <div class="form-group">
+	                        <div class="col-md-6 col-md-offset-4">
+	                        	<button type="submit" name="submit" value="Register" class="btn btn-primary" id="submit">Register</button>
+	                        </div>
+	                    </div>
+
+	                </form>
+
+	            </div>
+	        </div>
+	    </div>
+	</div>
+@endsection
+
